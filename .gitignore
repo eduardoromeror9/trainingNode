@@ -143,5 +143,6 @@ dist
 .svelte-kit
 
 tempCodeRunnerFile.js*
+/salida/*txt
 
 # End of https://www.toptal.com/developers/gitignore/api/node
