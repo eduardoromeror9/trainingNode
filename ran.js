@@ -1,7 +1,4 @@
 
-//  ! Hacer una funcion que reciba una lista de nombres y devuelva otra lista de nombres con 3 nombres ramdom que no se repitan
-
-
 let nombres = [
   "Eduardo", "Juan", "Galo", 
   "Lucas", "Soledad", "Cristian", 

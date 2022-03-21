@@ -11,6 +11,12 @@ const argv = require("yargs")
     default: false,
     describe: "Muestra la tabla de multiplicar"
   })
+  .option("h", {
+    alias: "hasta",
+    type: "number",
+    default: 10,
+    describe: "Hasta donde llega la tabla"
+  })
   .check((argv, options) => {
     if (isNaN(argv.base)) {
       throw "El valor introducido no es un numero";
