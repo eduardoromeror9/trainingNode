@@ -104,7 +104,9 @@ class Tareas {
         this._listado[tarea.id].completedEn = null;
       }
     });
+
   }
+
 
 }
 
