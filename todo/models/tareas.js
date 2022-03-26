@@ -20,6 +20,17 @@ class Tareas {
   }
 
 
+  borrarTarea( id = '' ) {
+
+    if ( this._listado[id] ) {
+      delete this._listado[id];
+    } // else {
+    //   console.log('No existe esa tarea');
+    // }
+
+  }
+
+
   cargarTareasFromArray(tareas = []) {
 
     tareas.forEach( tarea => {
@@ -65,7 +76,7 @@ class Tareas {
       if ( completadas ) {  
         if ( completedEn ) {
           contador++;
-          console.log(`${contador.toString().green} - ${description} - ${completedEn}`);
+          console.log(`${contador.toString().green} - ${description} - ${completedEn.green}`);
         }
       } else {
         if ( !completedEn ) {
@@ -75,6 +86,28 @@ class Tareas {
       }
     });
   }
+
+
+  toogleCompletadas( ids = [] ) {
+
+    ids.forEach( id => {
+
+      const tarea = this._listado[id];
+
+      if ( !tarea.completedEn ) {
+        tarea.completedEn = new Date().toISOString();
+      }
+    });
+
+    this.listadoArray.forEach( tarea => {
+      if ( !ids.includes(tarea.id) ) {
+        this._listado[tarea.id].completedEn = null;
+      }
+    });
+
+  }
+
+
 }
 
 
