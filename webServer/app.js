@@ -1,11 +1,22 @@
-const http = require('http');
+const express = require('express')
+const app = express()
+const port = 8080
 
-http.createServer((req, res) => {
+app.get('/', (req, res) => {
+  res.send('Home Page')
+})
 
-  res.write('Hola mundo');
-  res.end();
 
-}).listen(8080);
+app.get('/hola-mundo', (req, res) => {
+  res.send('Hello World en su ruta')
+})
 
-console.log('Servidor corriendo en el puerto', 8080);
-console.log('Para salir presione CTRL + C');
+
+app.get('*', function (req, res) {
+  res.send('404 | Page not found')
+})
+
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
