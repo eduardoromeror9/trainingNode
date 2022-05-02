@@ -39,9 +39,22 @@ const UsuarioSchema = Schema({
     default: false
   }
 
-
 });
 
+
+
+// Ocultar campos en la respuesta
+
+UsuarioSchema.method('toJSON', function() {
+  
+  const user = this;
+  const userObject = user.toObject();
+  delete userObject.password;
+  // delete userObject.__v;
+  
+  return userObject;
+  
+})
 
 
 
