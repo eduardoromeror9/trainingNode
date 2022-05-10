@@ -18,12 +18,34 @@ const esAdminRole = (req, res = response, next) => {
     });
   }
 
-
   next();
+}
+
+
+const tieneRole = ( ...roles ) => {
+  
+  return (req, res = response, next) => {
+
+    if (!req.usuario) {
+      return res.status(500).json({
+        msg: 'Se quiere verificar el rol de un usuario sin validar el token'
+      });
+    }
+
+    if (!roles.includes (req.usuario.rol)) {
+      return res.status(401).json({
+        msg: `El usuario ${req.usuario.nombre} no tiene el rol de ${roles}`
+    });
+
+  }
+    next();
+
+  }
 }
 
 
 
 module.exports = {
-  esAdminRole
+  esAdminRole,
+  tieneRole
 }
